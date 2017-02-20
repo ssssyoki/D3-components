@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="d3.slider.css" media="screen" />
+</head>
+<body>
+	<div id='slider'></div>
+	<script src="d3.v3.min.js"></script>
+	<script src="d3.slider.js"></script>
+	<script type="text/javascript">
+		// Initialize slider
+		var slider = d3.slider().min(0).max(100).ticks(2).showRange(true).value(50);
+		// Render the slider in the div
+		d3.select('#slider').call(slider);
+	</script>
+</body>
+</html>
