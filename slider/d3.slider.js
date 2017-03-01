@@ -16,7 +16,7 @@ d3.slider = function module() {
         selection.each(function() {
             //d3.classed => to add a class
             div = d3.select(this).classed('d3slider', true);
-            width = 180
+            width = 130
             //width = parseInt(div.style("width"), 10)-(margin.left + margin.right);
             //width == 898
             console.log(width)
@@ -24,7 +24,7 @@ d3.slider = function module() {
             //domain定义域,range值域
             scale = d3.scale.linear().domain([min,max]).range([0,width]).clamp(true);
             //定义色值比例尺
-            color = d3.scale.linear().domain([min,50,max]).range(["#54FF9F","#FFB90F",'#EE2C2C']);
+            color = d3.scale.linear().domain([min,50,max]).range(["#49c79b","#fca744",'#ef5b33']);
             //色值与坐标位置转换
             positionScale = d3.scale.linear().domain([0,width]).range([min,max]).clamp(true);
             // SVG 
@@ -51,12 +51,12 @@ d3.slider = function module() {
 
             gradient.append("stop")
             .attr("offset", "0%")
-            .attr("stop-color", "#54FF9F")
+            .attr("stop-color", "#49c79b")
             .attr("stop-opacity", 1);
 
             gradient.append("stop")
             .attr("offset", "100%")
-            .attr("stop-color", "#FFB90F")
+            .attr("stop-color", "#fca744")
             .attr("stop-opacity", 1);
 
             var gradient2 = svg.append("defs")
@@ -70,12 +70,12 @@ d3.slider = function module() {
 
             gradient2.append("stop")
             .attr("offset", "0%")
-            .attr("stop-color", "#FFB90F")
+            .attr("stop-color", "#fca744")
             .attr("stop-opacity", 1);
 
             gradient2.append("stop")
             .attr("offset", "100%")
-            .attr("stop-color", "#EE2C2C")
+            .attr("stop-color", "#ef5b33")
             .attr("stop-opacity", 1);
 
             if (range) {
@@ -87,9 +87,9 @@ d3.slider = function module() {
 
                 svg.append("rect")
                 .attr("class", "d3slider-rect-value-2")
-                .attr("width", 180 - scale(value))
+                .attr("width", 130 - scale(value))
                 .attr("height", rectHeight)
-                .attr('x',90)
+                .attr('x',65)
                 .style('fill','url(#gradient2)');
             }
       
@@ -196,7 +196,7 @@ d3.slider = function module() {
             svg.selectAll(".d3slider-rect-value")
                .attr("width",scale(value));
             svg.selectAll('.d3slider-rect-value-2')
-               .attr('width',180 - scale(value))
+               .attr('width',130 - scale(value))
                .attr('x',scale(value))
             console.log(color(positionScale(scale(value))))
         }
